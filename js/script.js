@@ -150,8 +150,69 @@ $(function () {
 }());
 
 const headerMenu = document.querySelector('.header__menu'),
-	  headerMenuBody = document.querySelector('.header__menu-body'),
-	  bodyMenuClose = document.querySelector('.body-menu__close');
+	headerMenuBody = document.querySelector('.header__menu-body'),
+	bodyContentCircle = document.querySelectorAll('.body-content__circle'),
+	bodyMenuClose = document.querySelector('.body-menu__close');
+
+const select = function () {
+	const selectHeader = document.querySelectorAll('.select-header'),
+		selectItem = document.querySelectorAll('.select-body__item');
+
+	const selectToggle = function (e) {
+		this.parentElement.classList.toggle('active');
+		if (this.parentElement.classList.contains('active')) {
+			document.querySelector('.select-header__icon').classList.add('active');
+		} else {
+			document.querySelector('.select-header__icon').classList.remove('active');
+		}
+	};
+
+	const selectChoose = function () {
+		const text = this.innerHTML,
+			select = this.closest('.select'),
+			currentText = this.closest('.select').querySelector('.select-header__current');
+
+		currentText.innerHTML = text;
+		select.classList.remove('active');
+		document.querySelector('.select-header__icon').classList.remove('active');
+	};
+
+	if (document.querySelector('.select')) {
+		document.addEventListener('click', (e) => {
+			if (!e.target.closest('.select')) {
+				document.querySelector('.select').classList.remove('active');
+				document.querySelector('.select-header__icon').classList.remove('active');
+			}
+		});
+	}
+
+	selectHeader.forEach(item => {
+		item.addEventListener('click', selectToggle);
+	});
+
+	selectItem.forEach(item => {
+		item.addEventListener('click', selectChoose);
+	});
+};
+
+select();
+
+// for (let i = 0; i < bodyContentCircle.length; i++) {
+// 	bodyContentCircle[i].addEventListener('click', (e) => {
+// 		// if (bodyContentCircle[i] != this) {
+// 		// 	bodyContentCircle[i].classList.add('active');
+// 		// } else {
+// 		// 	bodyContentCircle[i].classList.remove('active');
+// 		// }
+// 		if (e.target.closest('.body-content__categories')) {
+// 			bodyContentCircle[i].classList.add('active');
+// 		} else if (bodyContentCircle[i] != this) {
+// 			bodyContentCircle[i].classList.remove('active');
+// 		}
+// 	});
+// }
+
+
 
 headerMenu.addEventListener('click', () => {
 	headerMenuBody.classList.add('active');
