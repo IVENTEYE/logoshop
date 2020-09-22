@@ -17,6 +17,46 @@ $(function () {
 		dots: false,
 		asNavFor: '.items-slider',
 	});
+
+	$('.body-content__categories').slick({
+		infinite: false,
+		slidesToShow: 8,
+		slidesToScroll: 1,
+		arrows: false,
+		dots: false,
+		responsive: [
+			{
+				breakpoint: 992,
+				settings: {
+				  slidesToShow: 6,
+				}
+			  },
+			  {
+				breakpoint: 768,
+				settings: {
+				  slidesToShow: 4,
+				}
+			  },
+			  {
+				breakpoint: 560,
+				settings: {
+				  slidesToShow: 3,
+				}
+			  },
+			  {
+				breakpoint: 470,
+				settings: {
+				  slidesToShow: 2,
+				}
+			  },
+			  {
+				breakpoint: 391,
+				settings: {
+				  slidesToShow: 7,
+				}
+			  },
+		]
+	});
 });
 
 (function () {
