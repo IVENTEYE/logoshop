@@ -155,8 +155,11 @@ const headerMenu = document.querySelector('.header__menu'),
 
 headerMenu.addEventListener('click', () => {
 	headerMenuBody.classList.add('active');
+	document.body.style.overflow = 'hidden';
 });
 
 bodyMenuClose.addEventListener('click', () => {
 	headerMenuBody.classList.remove('active');
+	document.body.style.overflow = 'visible';
 });
+
