@@ -195,6 +195,9 @@ const headerMenu = document.querySelector('.header__menu'),
 	bodyContentCircle = document.querySelectorAll('.body-content__circle'),
 	tabsProductImage = document.querySelectorAll('.tabs-product__image'),
 	dotsProductImage = document.querySelectorAll('.dots-product__image'),
+	inputProductField = document.querySelector('.input-product__field'),
+	inputProductPrev = document.querySelector('.input-product__prev'),
+	inputProductNext = document.querySelector('.input-product__next'),
 	bodyMenuClose = document.querySelector('.body-menu__close');
 
 const select = function () {
@@ -248,20 +251,25 @@ const select = function () {
 
 select();
 
-// for (let i = 0; i < bodyContentCircle.length; i++) {
-// 	bodyContentCircle[i].addEventListener('click', (e) => {
-// 		// if (bodyContentCircle[i] != this) {
-// 		// 	bodyContentCircle[i].classList.add('active');
-// 		// } else {
-// 		// 	bodyContentCircle[i].classList.remove('active');
-// 		// }
-// 		if (e.target.closest('.body-content__categories')) {
-// 			bodyContentCircle[i].classList.add('active');
-// 		} else if (bodyContentCircle[i] != this) {
-// 			bodyContentCircle[i].classList.remove('active');
-// 		}
-// 	});
-// }
+if (inputProductField) {
+	let prodectValue = 0;
+	const inputMinus = () => {
+			if (inputProductField.value === '0' || inputProductField.value === '') {
+				inputProductField.value = '';
+			} else {
+				inputProductField.value = prodectValue = prodectValue - 1;
+			}
+	};
+	const inputPlus = () => {
+			inputProductField.value = prodectValue = prodectValue + 1;
+	};
+	const inputChange = (e) => {
+			e.target.value = "Выбрать";
+	};
+	inputProductField.addEventListener('input', inputChange)
+	inputProductPrev.addEventListener('click', inputMinus);
+	inputProductNext.addEventListener('click', inputPlus);
+}
 
 if (dotsProductImage) {
 	dotsProductImage.forEach( item => {
